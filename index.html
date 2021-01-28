@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id = removeBtnMobile class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id= mobileQuantity type="text" class="form-control text-center" value="1">
+                           <button id= addBtnMobile class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$ <span id= mobilePrice>1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$ <span id= subTotal>1278</span></h5>
                         <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$ <span id = total>1278</span></h5>
                      </div>
                   </div>
                </div>
@@ -77,6 +77,35 @@
          </div>
       </div>
    </section>
+   <script>
+      // add button for mobile handler
+      const addBtnMobile = document.getElementById("addBtnMobile")
+      addBtnMobile.addEventListener("click", function(){
+         addBtn("mobileQuantity")
+         addUpdatePrice ('mobilePrice');
+         addUpdatePrice("subTotal")
+         addUpdatePrice("total")
+
+      })
+     
+
+
+      function addBtn(id){
+         const mobileQuantity = document.getElementById(id).value;
+         const mobileQuantityNumber = parseFloat(mobileQuantity);
+         const addQuantity = mobileQuantityNumber +1;
+         document.getElementById(id).value = addQuantity;
+      }
+
+      function addUpdatePrice(id){
+         const mobilePrice = document.getElementById(id).innerText;
+         const mobilePriceNumber = parseFloat(mobilePrice);
+         const totalMobilePrice = mobilePriceNumber + 1219;
+         document.getElementById(id).innerText = totalMobilePrice;
+      }
+
+
+   </script>
 </body>
 
 </html>
