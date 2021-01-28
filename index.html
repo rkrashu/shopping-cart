@@ -87,6 +87,15 @@
          addUpdatePrice("total")
 
       })
+
+      // remove btn for mobile handler
+      const removeBtnMobile = document.getElementById("removeBtnMobile");
+      removeBtnMobile.addEventListener("click", function() {
+         removeBtn("mobileQuantity");
+         removeUpdatePrice("mobilePrice");
+         removeUpdatePrice("subTotal")
+         removeUpdatePrice("total")
+      })
      
 
 
@@ -104,6 +113,19 @@
          document.getElementById(id).innerText = totalMobilePrice;
       }
 
+      function removeBtn(id){
+         const mobileQuantity = document.getElementById(id).value;
+         const mobileQuantityNumber = parseFloat(mobileQuantity);
+         const addQuantity = mobileQuantityNumber + (-1);
+         document.getElementById(id).value = addQuantity;
+      }
+
+      function removeUpdatePrice(id){
+         const mobilePrice = document.getElementById(id).innerText;
+         const mobilePriceNumber = parseFloat(mobilePrice);
+         const totalMobilePrice = mobilePriceNumber + (-1219);
+         document.getElementById(id).innerText = totalMobilePrice;
+      }
 
    </script>
 </body>
