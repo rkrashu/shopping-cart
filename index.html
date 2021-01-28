@@ -30,7 +30,7 @@
                            <button id= addBtnMobile class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5>$ <span id= mobilePrice>1219</span></h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
+                        <img id= removeItemMobile src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
                </div>
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id = removeBtnCover class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id = coverQuantity type="text" class="form-control text-center" value="1">
+                           <button id = addBtnCover class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$ <span id = coverPrice>59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -82,9 +82,9 @@
       const addBtnMobile = document.getElementById("addBtnMobile")
       addBtnMobile.addEventListener("click", function(){
          addBtn("mobileQuantity")
-         addUpdatePrice ('mobilePrice');
-         addUpdatePrice("subTotal")
-         addUpdatePrice("total")
+         addUpdatePriceMobile ('mobilePrice');
+         addUpdatePriceMobile("subTotal")
+         addUpdatePriceMobile("total")
 
       })
 
@@ -92,11 +92,29 @@
       const removeBtnMobile = document.getElementById("removeBtnMobile");
       removeBtnMobile.addEventListener("click", function() {
          removeBtn("mobileQuantity");
-         removeUpdatePrice("mobilePrice");
-         removeUpdatePrice("subTotal")
-         removeUpdatePrice("total")
+         removeUpdatePriceMobile("mobilePrice");
+         removeUpdatePriceMobile("subTotal")
+         removeUpdatePriceMobile("total")
       })
-     
+
+      //add btn for cover handler
+      const addBtnCover = document.getElementById("addBtnCover");
+      addBtnCover.addEventListener("click", function(){
+         addBtn("coverQuantity")
+         addUpdatePriceCover ('coverPrice');
+         addUpdatePriceCover("subTotal")
+         addUpdatePriceCover("total")
+      })
+
+       // remove btn for covwe handler
+       const removeBtnCover = document.getElementById("removeBtnCover");
+      removeBtnCover.addEventListener("click", function() {
+         removeBtn("coverQuantity");
+         removeUpdatePriceCover("coverPrice");
+         removeUpdatePriceCover("subTotal")
+         removeUpdatePriceCover("total")
+      })
+
 
 
       function addBtn(id){
@@ -106,7 +124,7 @@
          document.getElementById(id).value = addQuantity;
       }
 
-      function addUpdatePrice(id){
+      function addUpdatePriceMobile(id){
          const mobilePrice = document.getElementById(id).innerText;
          const mobilePriceNumber = parseFloat(mobilePrice);
          const totalMobilePrice = mobilePriceNumber + 1219;
@@ -120,10 +138,23 @@
          document.getElementById(id).value = addQuantity;
       }
 
-      function removeUpdatePrice(id){
+      function removeUpdatePriceMobile(id){
          const mobilePrice = document.getElementById(id).innerText;
          const mobilePriceNumber = parseFloat(mobilePrice);
          const totalMobilePrice = mobilePriceNumber + (-1219);
+         document.getElementById(id).innerText = totalMobilePrice;
+      }
+
+      function addUpdatePriceCover(id){
+         const mobilePrice = document.getElementById(id).innerText;
+         const mobilePriceNumber = parseFloat(mobilePrice);
+         const totalMobilePrice = mobilePriceNumber + 59;
+         document.getElementById(id).innerText = totalMobilePrice;
+      }
+      function removeUpdatePriceCover(id){
+         const mobilePrice = document.getElementById(id).innerText;
+         const mobilePriceNumber = parseFloat(mobilePrice);
+         const totalMobilePrice = mobilePriceNumber + (-59);
          document.getElementById(id).innerText = totalMobilePrice;
       }
 
